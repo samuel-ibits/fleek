@@ -7,21 +7,21 @@ CORS(app)
 @app.route('/post/', methods=['POST'])
 def post_something():
    
-    response= request.get_json()
-    return response
+    response= request.form.get('name')
+    # return response
    
-    # # You can add the test cases you made in the previous function, but in our case here you are just testing the POST functionality
-    # if response:
-    #     return jsonify({
+    # You can add the test cases you made in the previous function, but in our case here you are just testing the POST functionality
+    if response:
+        return jsonify({
            
-    #         "Message": "Welcome to our awesome API!",
-    #         # Add this option to distinct the POST request
-    #         "METHOD": "POST"
-    #     })
-    # else:
-    #     return jsonify({
-    #         "ERROR": "No name found. Please send a name."
-    #     })
+            "Message": "Welcome to our awesome API!",
+            # Add this option to distinct the POST request
+            "METHOD": "POST"
+        })
+    else:
+        return jsonify({
+            "ERROR": "No name found. Please send a name."
+        })
 
 
 @app.route('/')
