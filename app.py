@@ -4,7 +4,7 @@ app = Flask(__name__)
 CORS(app)
 
 
-@app.route('/post/', methods=['POST', 'GET'])
+@app.route('/post/', methods=['POST'])
 def post_something():
    
     response= request.get_json()
