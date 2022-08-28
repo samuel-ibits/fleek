@@ -1,7 +1,53 @@
 from flask_cors import CORS
-from flask import Flask, request, jsonify
+from flask import Flask,jsonify, request
+import  json
+import numpy as np
+import pickle as p
+import joblib
+import traceback
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier 
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+import numpy as np
+
 app = Flask(__name__)
 CORS(app)
+
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    # json_=[0]
+    # json_=request.get_json(json_)
+ 
+    # #ajson_=  json.dumps(json_)
+    # # return ajson_
+    # query_df = pd.DataFrame(json_)
+    # query = pd.get_dummies(query_df)
+    # prediction = ds.predict(query)
+    # return jsonify({'prediction': list(prediction)})
+     if ds:
+        try:
+            json_=[]
+            json_=request.get_json(json_)
+ 
+            query = pd.get_dummies(pd.DataFrame(json_))
+            query = query.reindex(columns=model_columns, fill_value=0)
+
+            prediction = list(ds.predict(query))
+
+            return jsonify({'prediction': str(prediction)})
+
+        except:
+
+            return jsonify({'trace': traceback.format_exc()})
+     else:
+         print ('Train the model first')
+     return ('No model here to use')
+
+
+
+
 
 
 @app.route('/post/', methods=['POST'])
@@ -32,4 +78,12 @@ def index():
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
-    app.run(threaded=True, port=5000)
+   
+    port = 12345 # If you don't provide any port the port will be set to 12345
+
+    ds = joblib.load("model/model1.pkl") # Load "model.pkl"
+    print ('Model loaded')
+    model_columns = joblib.load("model/model_columns1.pkl") # Load "model_columns.pkl"
+    print ('Model columns loaded')
+
+    app.run(threaded=True,port=port, debug= True)
