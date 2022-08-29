@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <div class="top-box-1">
+            <div class="box1-sub">
+                <div class="button">
+                    <ion-icon name="chevron-back-outline"></ion-icon>
+                </div>
+
+                <p>Onboarding Loan</p>
+            </div>
+        </div>
+        <div class="top-box-2">
+            <div class="box-2-txt">
+                <p class="icon">
+                    <ion-icon name="document-outline"></ion-icon>
+                </p>
+                <p>
+                    Please answer the questions elow to help us give you the best offer
+                </p>
+            </div>
+        </div>
+
+        <div class="indicators">
+            <div class="active-indicator indic-1"></div>
+            <div class="indic-2"></div>
+            <div class="indic-3"></div>
+        </div>
+
+        <div class="form-holder">
+            <form action="">
+                <div class="form-1">
+                    <div class="input-holder-1">
+                        <input type="text" name="" id="" placeholder="First Name">
+                        <input type="text" name="" id="" placeholder="Last Name">
+                        <input type="text" name="" id="" placeholder="Email Address">
+                    </div>
+
+                    <div class="input-label">
+                        Gender <div class="line"></div>
+                    </div>
+                    <div class="input-holder-2">
+                        <div class="gender  male">Male</div>
+                        <div class="gender female">Female</div>
+                    </div>
+                    <div class="date">
+                        <p class="data-label">Date Of Birth</p>
+                        <input type="date" name="" id="">
+                    </div>
+
+                    <div class="big-btn next-1">
+                        Next
+                    </div>
+                </div>
+                <div class="form-2">
+                    <div class="input-label">
+                        <p class="full-width"> Marital Status</p>
+                        <div class="line-2"></div>
+                    </div>
+
+                    <div class="input-holder-3">
+                        <div class="active-pick single">Single</div>
+                        <div class="married">Married</div>
+                        <div class="others">Others</div>
+                    </div>
+
+                    <div class="input-label">
+                        <p class="full-width"> Marital Status</p>
+                        <div class="line-2"></div>
+                    </div>
+
+                    <div class="input-holder-4">
+                        <div class="monthly">Monthly</div>
+                        <div class="weekly">Weekly</div>
+                        <div class=" daily">Daily</div>
+
+                        <div class="employed">Empolyed</div>
+                        <div class="self-employed">Self-Empolyed</div>
+                        <div class="others2">Others</div>
+                    </div>
+
+                    <div class="input-holder-5">
+                        <select name="" id="">
+                            <option value="">N5,000 - N10,000 </option>
+                            <option value="">N10,000 - N15,000 </option>
+                            <option value="">N15,000 - N20,000 </option>
+                            <option value="">N20,000 - N25,000 </option>
+                            <option value="">N30,000 - N35,000 </option>
+                            <option value="">N40,000 - N45,000 </option>
+                            <option value="">N50,000 - Above </option>
+                        </select>
+                    </div>
+
+                    <div class="big-btn next-2">
+                        Next
+                    </div>
+                </div>
+
+                <div class="form-3">
+                    <div class="input-holder-1">
+                        <input type="text" name="" id="" placeholder="Applicant Income (Monthly)">
+                        <input type="text" name="" id="" placeholder="Co-Applicant Income">
+                        <input type="text" name="" id="" placeholder="Bank Balance">
+                        <input type="text" name="" id="" placeholder="Loan Amount Terms">
+                        <input type="text" name="" id="" placeholder="Loan Amount">
+                        <div class="pdf-input">
+                            <div>
+                                <p id = "GFG_DOWN">Bank Statement</p>
+                                <p>
+                                    <ion-icon name="cloud-upload"></ion-icon>
+                                </p>
+                            </div>
+                            <input type="file" oninput = "GFG_Fun()" name="" id="file">
+                        </div>
+                        <p class="sub-txt">Bank Statement Must Be At Least 6 Months Old</p>
+                    </div>
+
+                    <div class="submit-holder">
+                        <button class="big-btn">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+
+                
+            </form>
+        </div>
+    </div>
+
+    <div class="menu-holder">
+        <div class="menu">
+            <ul>
+                <li>
+                   <a href="/FSI UI/code/html/index.html">
+                    <ion-icon name="home"></ion-icon>
+                    <p class="icon-title">Home</p>
+                   </a>
+                </li>
+                <li>
+                   <a href="/FSI UI/code/html/Profile.html">
+                    <ion-icon name="person"></ion-icon>
+                    <p class="icon-title">Profile</p>
+                   </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    </div>
+
+    <script src="script/script.js"></script>
+    <script>
+        $(".form-1").fadeIn("fast");
+        $(".form-2").fadeOut("fast");
+        $(".form-3").fadeOut("fast");
+    </script>
+    <script> 
+        var up = document.getElementById('GFG_UP');
+        var down = document.getElementById('GFG_DOWN');
+          
+        up.innerHTML = "Click on the button to see"
+                    + " if any file is selected";
+          
+        function GFG_Fun() {
+            if ($('#file')[0].files.length === 0) {
+                down.innerHTML = "No files selected";
+            } else {
+                down.innerHTML = document.getElementById("file").value;
+            }
+        }
+    </script> 
+</body>
+
+</html>

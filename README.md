@@ -1,3 +1,3 @@
 
 # fleek
- A machine learning loan priction system
+ A machine learning loan pridiction system
