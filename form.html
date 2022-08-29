@@ -63,10 +63,10 @@
 
 // +   var value = Object.fromEntries(data.entries());
 
-  console.log({ data });
+  console.log(data );
 
             var http = new XMLHttpRequest();
-            var url = 'http://127.0.0.1:5000/post/';
+            var url = 'https://fleek-api.herokuapp.com/predict';
             http.open('POST', url, true);
             http.setRequestHeader("Content-Type", "application/json");
             http.onreadystatechange = function() {
