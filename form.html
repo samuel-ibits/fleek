@@ -30,7 +30,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-success">Submit</button>
+                            <button type="submit" class="btn btn-success" onclick="submit()">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -40,28 +40,30 @@
 
     <script>
         // handle form submit
-        function submitFormData(event) {
+        function submit() {
 
             // form values
-            var name = event.name.value;
-            var email = event.email.value;
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('name').value;
+//  var object={}
+//  object[name]=name;
+//    object[email]=email;
+            
+            var data[] = {
+            "name": [name],"email" : [email]}
 
-            var data = new FormData();
-            data.append('name', name);
-            data.append('email', email);
 
 
-
-            var object = {};
-data.forEach(function(value, key){
-    object[key] = value;
-});
-var json = JSON.stringify(object);
-console.log(json);
+//             var object = {};
+// data.forEach(function(value, key){
+//     object[key] = value;
+// });
+// var json = JSON.stringify(object);
+// console.log(json);
 
 // +   var value = Object.fromEntries(data.entries());
 
-//     console.log({ value });
+  console.log({ data });
 
             var http = new XMLHttpRequest();
             var url = 'http://127.0.0.1:5000/post/';
