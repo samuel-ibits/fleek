@@ -513,3 +513,37 @@ flex-direction: column;
 .active-link{
   color: #6f0887;
 }
+
+.Loan_procc{
+  margin: 0px 0px 35px 0px;
+  width: 100%;
+  height: 412px;
+  text-align: center;
+  padding: 2rem;
+  color: white;
+  display: block;
+  position: relative;
+  border-radius: 0px 0px 41px 41px;
+  background-image: url("../imgs/compleximg.png");
+  background-size: cover;
+  background-color: black;
+}
+
+.Loan_procc2{
+  top: 75px;
+  z-index: -1;
+  width: 100%;
+  height: 352px;
+  display: block;
+  position: absolute;
+  border-radius: 0px 0px 41px 41px;
+  background-color: #4B0753;
+}
+
+.Loan_procc h1{
+  font-size: 20pt;
+}
+
+.processing{
+  margin-top: 9rem;
+}

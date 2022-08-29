@@ -1,4 +1,4 @@
-# from flask_cors import CORS
+from flask_cors import CORS
 from flask import Flask,jsonify, request
 import  json
 import numpy as np
@@ -12,7 +12,7 @@ from sklearn.metrics import accuracy_score
 
 
 app = Flask(__name__)
-# CORS(app)
+CORS(app)
 
 
 @app.route('/predict', methods=['POST'])
@@ -32,9 +32,9 @@ def predict():
         except:
 
             return jsonify({'trace': traceback.format_exc()})
-     else:
+   else:
          print ('Train the model first')
-     return ('No model here to use')
+   return ('No model here to use')
 
 
 
