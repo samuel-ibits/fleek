@@ -59,10 +59,14 @@ data.forEach(function(value, key){
 var json = JSON.stringify(object);
 console.log(json);
 
++   const value = Object.fromEntries(data.entries());
+
+    console.log({ value });
 
             var http = new XMLHttpRequest();
             var url = 'http://127.0.0.1:5000/post/';
             http.open('POST', url, true);
+            http.setRequestHeader("Content-Type", "application/json");
             http.onreadystatechange = function() {
                 if (http.readyState == 4 && http.status == 200) {
                     alert("Form submitted successfully");
