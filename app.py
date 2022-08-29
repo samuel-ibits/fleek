@@ -1,4 +1,4 @@
-from flask_cors import CORS
+# from flask_cors import CORS
 from flask import Flask,jsonify, request
 import  json
 import numpy as np
@@ -12,7 +12,7 @@ from sklearn.metrics import accuracy_score
 import numpy as np
 
 app = Flask(__name__)
-CORS(app)
+# CORS(app)
 
 
 @app.route('/predict', methods=['POST'])
