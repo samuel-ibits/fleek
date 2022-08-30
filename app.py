@@ -1,7 +1,7 @@
 from flask_cors import CORS
 from flask import Flask,jsonify, request
 import  json
-import numpy as np
+# import numpy as np
 import pickle as p
 import joblib
 import traceback
@@ -22,25 +22,42 @@ def predict():
     print ('Model loaded')
     model_columns = joblib.load("model/model_columns1.pkl") # Load "model_columns.pkl"
     print ('Model columns loaded')
+    json_=request.get_data()  
+            # print(model_columns) 
+    json_=json.loads(json_)          
+    print(json_)
+    query = pd.get_dummies(pd.DataFrame(json_, index=list(0)))
+    print(query)
+       
+    query = query.reindex(columns=model_columns, fill_value=0)
+    print(query)
 
-    if ds:
-        try:
-            json_=[]
-            json_=request.get_json(json_)
+    prediction = list(ds.predict(query))
+
+    return jsonify({'prediction': str(prediction)})
+  
+    # if ds:
+    #     try:
+    #         # json_=[]
+    #         json_=request.get_json()
+    #         # print(model_columns) 
  
-            query = pd.get_dummies(pd.DataFrame(json_, index='0'))
-            query = query.reindex(columns=model_columns, fill_value=0)
+    #         query = pd.get_dummies(pd.DataFrame(json_, index={'0','0'}))
+    #         print(query)
+       
+    #         query = query.reindex(columns=model_columns, fill_value=0)
+    #         print(query)
 
-            prediction = list(ds.predict(query))
+    #         prediction = list(ds.predict(query))
 
-            return jsonify({'prediction': str(prediction)})
+    #         return jsonify({'prediction': str(prediction)})
 
-        except:
+    #     except:
 
-            return jsonify({'trace': traceback.format_exc()})
-    else:
-         print ('Train the model first')
-    return ('No model here to use')
+    #         return jsonify({'trace': traceback.format_exc()})
+    # else:
+    #      print ('Train the model first')
+    # return ('No model here to use')
 
 
 
