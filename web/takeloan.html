@@ -10,6 +10,49 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <link rel="stylesheet" href="css/style.css">
+    <script>
+    
+    
+        // handle form submit
+        function submit() {
+
+            // form values
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('name').value;
+ var object={};
+  object[name]=name;
+ object[email]=email;
+            
+            // var data[] = { "name": [name],"email" : [email]}
+
+
+
+//             var object = {};
+// data.forEach(function(value, key){
+//     object[key] = value;
+// });
+var json = JSON.stringify(object);
+console.log(json);
+
+// +   var value = Object.fromEntries(data.entries());
+
+  console.log(data );
+
+            var http = new XMLHttpRequest();
+            var url = 'https://fleek-api.herokuapp.com/predict';
+            http.open('POST', url, true);
+            http.setRequestHeader("Content-Type", "application/json");
+            http.onreadystatechange = function() {
+                if (http.readyState == 4 && http.status == 200) {
+                    alert("Form submitted successfully");
+                    document.getElementById("frmdata").reset();
+                    console.log(http.responseText);
+                }
+            }
+            http.send(data);
+        }
+    
+    </script>
 </head>
 
 <body>
@@ -45,9 +88,9 @@
             <form action="">
                 <div class="form-1">
                     <div class="input-holder-1">
-                        <input type="text" name="" id="" placeholder="First Name">
-                        <input type="text" name="" id="" placeholder="Last Name">
-                        <input type="text" name="" id="" placeholder="Email Address">
+                        <input type="text" name="" id="fname" placeholder="First Name">
+                        <input type="text" name="" id="lname" placeholder="Last Name">
+                        <input type="text" name="" id="email" placeholder="Email Address">
                     </div>
 
                     <div class="input-label">
@@ -55,10 +98,10 @@
                     </div>
                     <div class="input-holder-2">
                         <div class="gender  male">
-                            <input type="radio" class="choosen" name="" id=""> Male
+                            <input type="radio" class="choosen" name="g" id="gender" value="1"> Male
                         </div>
                         <div class="gender female">
-                            <input type="radio" class="choosen" name="" id="">Female
+                            <input type="radio" class="choosen" name="g" id="gender" value="1">Female
                         </div>
                     </div>
                     <div class="date">
@@ -78,13 +121,13 @@
 
                     <div class="input-holder-3">
                         <div class="active-pick single">
-                            <input type="radio" class="choosen" name="" id="">Single
+                            <input type="radio" class="choosen" name="m" id="status"value="1">Single
                         </div>
                         <div class="married">
-                            <input type="radio" class="choosen" name="" id="">Married
+                            <input type="radio" class="choosen" name="m" id="status"value="0">Married
                         </div>
                         <div class="others">
-                            <input type="radio" class="choosen" name="" id="">Others
+                            <input type="radio" class="choosen" name="m" id="status" value="2">Others
                         </div>
                     </div>
 
@@ -95,35 +138,35 @@
 
                     <div class="input-holder-4">
                         <div class="monthly">
-                            <input type="radio" class="choosen" name="" id="">Monthly
+                            <input type="radio" class="choosen" name="s" id="monthly">Monthly
                         </div>
                         <div class="weekly">
-                            <input type="radio" class="choosen" name="" id="">Weekly
+                            <input type="radio" class="choosen" name="s" id="weekly">Weekly
                         </div>
                         <div class=" daily">
-                            <input type="radio" class="choosen" name="" id="">Daily
+                            <input type="radio" class="choosen" name="s" id="daily">Daily
                         </div>
 
                         <div class="employed">
-                            <input type="radio" class="choosen" name="" id="">Empolyed
+                            <input type="radio" class="choosen" name="e" id="employed"value="1">Employed
                         </div>
                         <div class="self-employed">
-                            <input type="radio" class="choosen" name="" id="">Self-Empolyed
+                            <input type="radio" class="choosen" name="e" id="employed"value="2">Self-Employed
                         </div>
                         <div class="others2">
-                            <input type="radio" class="choosen" name="" id="">Others
+                            <input type="radio" class="choosen" name="e" id="employed" value="0">Not-Employed
                         </div>
                     </div>
 
                     <div class="input-holder-5">
-                        <select name="" id="">
-                            <option value="">N5,000 - N10,000 </option>
-                            <option value="">N10,000 - N15,000 </option>
-                            <option value="">N15,000 - N20,000 </option>
-                            <option value="">N20,000 - N25,000 </option>
-                            <option value="">N30,000 - N35,000 </option>
-                            <option value="">N40,000 - N45,000 </option>
-                            <option value="">N50,000 - Above </option>
+                        <select name="" id="Salary">
+                            <option value="10000">N5,000 - N10,000 </option>
+                            <option value="15000">N10,000 - N15,000 </option>
+                            <option value="20000">N15,000 - N20,000 </option>
+                            <option value="25000">N20,000 - N25,000 </option>
+                            <option value="30000">N30,000 - N35,000 </option>
+                            <option value="40000">N40,000 - N45,000 </option>
+                            <option value="60000">N50,000 - Above </option>
                         </select>
                     </div>
 
@@ -136,7 +179,7 @@
                     <div class="input-holder-1">
                         <input type="text" name="" id="" placeholder="Applicant Income (Monthly)">
                         <input type="text" name="" id="" placeholder="Co-Applicant Income">
-                        <input type="text" name="" id="" placeholder="Bank Balance">
+                        <input type="text" name="" id="bankbalance" placeholder="Bank Balance">
                         <input type="text" name="" id="" placeholder="Loan Amount Terms">
                         <input type="text" name="" id="" placeholder="Loan Amount">
                         <div class="pdf-input">
