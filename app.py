@@ -28,7 +28,7 @@ def predict():
             json_=[]
             json_=request.get_json(json_)
  
-            query = pd.get_dummies(pd.DataFrame(json_, index=list('0')))
+            query = pd.get_dummies(pd.DataFrame(json_, index='0'))
             query = query.reindex(columns=model_columns, fill_value=0)
 
             prediction = list(ds.predict(query))

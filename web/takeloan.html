@@ -44,9 +44,11 @@ console.log(json);
             http.setRequestHeader("Content-Type", "application/json");
             http.onreadystatechange = function() {
                 if (http.readyState == 4 && http.status == 200) {
+
                     alert("Form submitted successfully");
                     document.getElementById("frmdata").reset();
                     console.log(http.responseText);
+                    window.location.replace("code/html/loan_processing.html");
                 }
             }
             http.send(data);
@@ -195,10 +197,10 @@ console.log(json);
                     </div>
 
                     <div class="submit-holder">
-                        <button class="big-btn">
-                            <a href="code/html/loan_processing.html">
+                        <button class="big-btn" onclick="submit()">
+                            <!-- <a href="code/html/loan_processing.html"> -->
                                 Submit
-                            </a>
+                            <!-- </a> -->
                         </button>
                     </div>
                 </div>
