@@ -17,7 +17,7 @@ CORS(app)
 
 @app.route('/predict', methods=['POST'])
 def predict():
-   if ds:
+    if ds:
         try:
             json_=[]
             json_=request.get_json(json_)
@@ -32,9 +32,9 @@ def predict():
         except:
 
             return jsonify({'trace': traceback.format_exc()})
-   else:
+    else:
          print ('Train the model first')
-   return ('No model here to use')
+    return ('No model here to use')
 
 
 
