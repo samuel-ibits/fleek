@@ -17,6 +17,12 @@ CORS(app)
 
 @app.route('/predict', methods=['POST'])
 def predict():
+    
+    ds = joblib.load("model/model1.pkl") # Load "model.pkl"
+    print ('Model loaded')
+    model_columns = joblib.load("model/model_columns1.pkl") # Load "model_columns.pkl"
+    print ('Model columns loaded')
+
     if ds:
         try:
             json_=[]
@@ -72,10 +78,5 @@ if __name__ == '__main__':
    
     port = 12345 
     # If you don't provide any port the port will be set to 12345
-
-    ds = joblib.load("model/model1.pkl") # Load "model.pkl"
-    print ('Model loaded')
-    model_columns = joblib.load("model/model_columns1.pkl") # Load "model_columns.pkl"
-    print ('Model columns loaded')
 
     app.run(threaded=True,port=port, debug= True)
