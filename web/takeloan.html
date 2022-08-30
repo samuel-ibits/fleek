@@ -48,7 +48,11 @@ console.log(json);
                     alert("Form submitted successfully");
                     document.getElementById("frmdata").reset();
                     console.log(http.responseText);
+                    if(http.responseText==1){alert('you are eligible');
                     window.location.replace("code/html/loan_processing.html");
+                }else{alert('you are not eligible for that amount of credit');
+            }
+                    
                 }
             }
             http.send(data);
